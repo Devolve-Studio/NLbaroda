@@ -1,0 +1,42 @@
+---
+const services = [
+    {
+        title: "Freight Forwarding",
+        desc: "Seamless international and domestic freight solutions across land, air, and sea.",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`
+    },
+    {
+        title: "Warehousing",
+        desc: "State-of-the-art secure storage facilities equipped with modern inventory management.",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>`
+    },
+    {
+        title: "Supply Chain Management",
+        desc: "End-to-end optimization of your supply chain to reduce costs and improve speed.",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>`
+    },
+    {
+        title: "Express Delivery",
+        desc: "Time-critical delivery services ensuring your most urgent shipments arrive on schedule.",
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`
+    }
+];
+---
+<section id="services" class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal opacity-0 translate-y-8 transition-all duration-700">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Our Core Services</h2>
+            <p class="text-lg text-slate-600">Comprehensive logistics solutions designed to scale with your business.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, index) => (
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 reveal opacity-0 translate-y-8 transition-all duration-700" style={`transition-delay: ${index * 150}ms`}>
+                    <div class="w-14 h-14 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center mb-6" set:html={service.icon} />
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
+                    <p class="text-slate-600 leading-relaxed">{service.desc}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
