@@ -1,11 +1,32 @@
-<section class="max-w-7xl mx-auto px-4 py-16 bg-white text-slate-800">
-    <div class="mb-12">
+<!-- Added 'relative' and 'overflow-hidden' to the parent section -->
+<section class="relative overflow-hidden max-w-7xl mx-auto px-4 py-16 bg-white text-slate-800">
+
+    <!-- Fixed typo: changed -translate-y-64pnpm to -translate-y-64 -->
+    <div class="absolute top-0 left-0 w-1/2 max-w-[500px] md:max-w-[700px] -translate-x-24 -translate-y-64 pointer-events-none z-0 reveal opacity-0 -rotate-20 transition-all duration-1000 delay-500">
+        <img
+                src="/tyre.png"
+                alt="Logistics background"
+                class="w-full h-auto object-contain select-none opacity-50"
+        />
+    </div>
+
+    <div class="absolute bottom-0 right-0 w-1/2 max-w-[500px] md:max-w-[700px] translate-x-1/4 translate-y-1/4 pointer-events-none z-0 reveal opacity-0 rotate-20 transition-all duration-1000 delay-500">
+        <img
+                src="/tyre.png"
+                alt="Logistics background"
+                class="w-full h-auto object-contain select-none opacity-50"
+        />
+    </div>
+
+    <!-- Added relative z-10 to ensure text stays above the absolute background images -->
+    <div class="relative z-10 mb-12">
         <h1 class="text-4xl font-bold text-blue-900 tracking-tight uppercase mb-8">Our Network</h1>
         <h2 class="text-xl italic text-blue-800 font-medium">Branch Contact Person & Contact Number</h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
-        <div class="space-y-10">
+    <!-- Added relative z-10 here as well -->
+    <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+        <div class="space-y-5">
             <div>
                 <h3 class="text-lg font-bold text-blue-900">Bangalore – Regional Office</h3>
                 <p class="text-slate-600 leading-relaxed italic">
@@ -50,7 +71,7 @@
             </div>
         </div>
 
-        <div class="space-y-10">
+        <div class="space-y-5">
             <div>
                 <h3 class="text-lg font-bold text-blue-900">Tiptur</h3>
                 <p class="text-slate-600 leading-relaxed italic">
