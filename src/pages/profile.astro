@@ -4,11 +4,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>National Logistics | Pioneer in Logistics Solutions</title>
-<script is:inline src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script is:inline id="tailwind-config">
+<script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -115,21 +115,47 @@
 </head>
 <body class="bg-background text-on-surface font-body-md selection:bg-on-tertiary-container selection:text-white">
 <!-- Top Navigation -->
-<nav class="fixed top-0 z-50 w-full h-20 bg-white border-b border-outline-variant">
-<div class="w-full h-full max-w-container-max mx-auto px-4 md:px-margin-desktop flex justify-between items-center">
+<nav class="fixed top-0 z-50 w-full h-20 bg-surface-lowest border-b border-outline-variant flex justify-between items-center px-4 md:px-margin-desktop max-w-container-max mx-auto">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary text-2xl" data-icon="conveyor_belt">conveyor_belt</span>
 <span class="font-headline-md text-headline-md-mobile font-bold tracking-tighter text-primary">NATIONAL LOGISTICS</span>
 </div>
-<div class="hidden md:flex items-center gap-6">
-<a class="text-on-surface-variant hover:text-primary font-bold transition-colors" href="#">About Us</a>
-<a class="text-on-surface-variant hover:text-primary font-bold transition-colors" href="#">Services</a>
-<a class="text-on-surface-variant hover:text-primary font-bold transition-colors" href="#">Fleet</a>
-<a class="text-on-surface-variant hover:text-primary font-bold transition-colors" href="#">Network</a>
-<a class="bg-primary text-white px-6 py-2 rounded font-bold hover:brightness-110 transition-all" href="#contact">Contact</a>
-</div>
-</div>
+<button class="p-2 hover:bg-surface-container-low transition-all" id="menu-toggle">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
 </nav>
+<!-- Side Navigation Drawer -->
+<div class="fixed inset-0 bg-black/50 z-[60] hidden backdrop-blur-sm transition-opacity duration-300 opacity-0" id="drawer-overlay"></div>
+<aside class="fixed inset-y-0 right-0 z-[70] w-80 bg-surface-bright p-6 transform translate-x-full transition-transform duration-300 industrial-shadow" id="nav-drawer">
+<div class="flex justify-between items-center mb-8">
+<span class="font-headline-md text-headline-md-mobile text-primary">Menu</span>
+<button class="p-2 hover:bg-surface-container-low transition-colors" id="close-drawer">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<nav class="space-y-4">
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-headline-md text-headline-md-mobile">About Us</span>
+</a>
+<a class="flex items-center gap-4 p-4 bg-secondary-container text-on-secondary-container font-bold rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+<span class="font-headline-md text-headline-md-mobile">Services</span>
+</a>
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="forklift">forklift</span>
+<span class="font-headline-md text-headline-md-mobile">Fleet</span>
+</a>
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-headline-md text-headline-md-mobile">Network</span>
+</a>
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-headline-md text-headline-md-mobile">Contact</span>
+</a>
+</nav>
+</aside>
 <main class="pt-20">
 <!-- Hero Section -->
 <section class="relative h-[80vh] w-full flex flex-col justify-center px-margin-mobile md:px-margin-desktop overflow-hidden">
@@ -342,7 +368,7 @@
 </div>
 </section>
 <!-- Network Section -->
-<section class="py-16 px-margin-mobile md:px-margin-desktop bg-white" id="network">
+<section class="py-16 px-margin-mobile md:px-margin-desktop bg-white">
 <div class="max-w-container-max mx-auto">
 <div class="text-center mb-16">
 <span class="font-label-sm text-label-sm text-on-primary-container uppercase">National Presence</span>
@@ -435,43 +461,6 @@
 </div>
 </div>
 </section>
-<!-- Contact Form Section -->
-<section id="contact" class="py-16 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest">
-<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
-<div>
-<span class="font-label-sm text-label-sm text-on-primary-container uppercase">Get in Touch</span>
-<h2 class="font-headline-lg text-headline-lg-mobile text-primary mt-2 mb-6">Request a Logistics Consultation</h2>
-<p class="font-body-lg text-on-surface-variant mb-8">Ready to optimize your supply chain? Fill out the form and our logistics experts will get back to you with a tailored solution.</p>
-<div class="space-y-4">
-<p class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-primary" data-icon="mail">mail</span> contact@nationallogistics.com</p>
-<p class="flex items-center gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-primary" data-icon="call">call</span> +91 1800 200 4545</p>
-</div>
-</div>
-<div class="bg-white border border-outline-variant p-8 industrial-shadow">
-<form class="space-y-6" onsubmit="event.preventDefault(); alert('Form submitted!');">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div>
-<label class="block font-label-sm text-label-sm uppercase mb-2">First Name</label>
-<input type="text" class="w-full border border-outline-variant p-3 focus:outline-none focus:border-primary transition-colors" placeholder="John" required />
-</div>
-<div>
-<label class="block font-label-sm text-label-sm uppercase mb-2">Last Name</label>
-<input type="text" class="w-full border border-outline-variant p-3 focus:outline-none focus:border-primary transition-colors" placeholder="Doe" required />
-</div>
-</div>
-<div>
-<label class="block font-label-sm text-label-sm uppercase mb-2">Email Address</label>
-<input type="email" class="w-full border border-outline-variant p-3 focus:outline-none focus:border-primary transition-colors" placeholder="john@example.com" required />
-</div>
-<div>
-<label class="block font-label-sm text-label-sm uppercase mb-2">Requirement Details</label>
-<textarea class="w-full border border-outline-variant p-3 h-32 focus:outline-none focus:border-primary transition-colors" placeholder="Tell us about your logistics needs..." required></textarea>
-</div>
-<button type="submit" class="w-full bg-primary text-white py-4 font-bold uppercase tracking-widest hover:brightness-110 transition-all">Submit Request</button>
-</form>
-</div>
-</div>
-</section>
 </main>
 <!-- Footer -->
 <footer class="bg-surface-container-highest border-t border-outline-variant">
@@ -525,8 +514,28 @@
 </div>
 </div>
 </footer>
-<script is:inline>
+<script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeDrawer = document.getElementById('close-drawer');
+        const navDrawer = document.getElementById('nav-drawer');
+        const drawerOverlay = document.getElementById('drawer-overlay');
 
+        function toggleMenu() {
+            const isOpen = !navDrawer.classList.contains('translate-x-full');
+            if (isOpen) {
+                navDrawer.classList.add('translate-x-full');
+                drawerOverlay.classList.add('hidden');
+                drawerOverlay.classList.replace('opacity-100', 'opacity-0');
+            } else {
+                navDrawer.classList.remove('translate-x-full');
+                drawerOverlay.classList.remove('hidden');
+                setTimeout(() => drawerOverlay.classList.replace('opacity-0', 'opacity-100'), 10);
+            }
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        closeDrawer.addEventListener('click', toggleMenu);
+        drawerOverlay.addEventListener('click', toggleMenu);
 
         // Micro-interaction for cards
         document.querySelectorAll('.industrial-shadow').forEach(card => {
