@@ -1,3 +1,8 @@
+---
+import Branches from "../components/Branches.astro";
+import ClientScroller from "../components/ClientScroller.astro";
+---
+
 <!DOCTYPE html>
 
 <html class="scroll-smooth" lang="en"><head>
@@ -122,10 +127,10 @@
 <span class="font-headline-md text-headline-md-mobile font-bold tracking-tighter text-primary">NATIONAL LOGISTICS</span>
 </div>
 <div class="hidden md:flex items-center gap-6">
-<a class="text-on-surface-variant hover:text-primary font-bold transition-colors" href="#">About Us</a>
-<a class="text-on-surface-variant hover:text-primary font-bold transition-colors" href="#">Services</a>
-<a class="text-on-surface-variant hover:text-primary font-bold transition-colors" href="#">Fleet</a>
-<a class="text-on-surface-variant hover:text-primary font-bold transition-colors" href="#">Network</a>
+<a class="text-on-surface-variant hover:text-primary font-bold transition-colors" href="#about">About Us</a>
+<a class="text-on-surface-variant hover:text-primary font-bold transition-colors" href="#service">Services</a>
+<a class="text-on-surface-variant hover:text-primary font-bold transition-colors" href="#fleet">Fleet</a>
+<a class="text-on-surface-variant hover:text-primary font-bold transition-colors" href="#network">Network</a>
 <a class="bg-primary text-white px-6 py-2 rounded font-bold hover:brightness-110 transition-all" href="#contact">Contact</a>
 </div>
 </div>
@@ -150,7 +155,7 @@
 <div class="absolute inset-0 industrial-grid pointer-events-none opacity-20"></div>
 </section>
 <!-- Leadership Introduction -->
-<section class="py-16 md:py-24 bg-surface px-margin-mobile md:px-margin-desktop">
+<section id="about" class="py-16 md:py-24 bg-surface px-margin-mobile md:px-margin-desktop scroll-mt-20">
 <div class="max-w-container-max mx-auto">
 <div class="mb-16">
 <span class="font-label-sm text-label-sm text-on-primary-container uppercase">The Legacy</span>
@@ -192,7 +197,7 @@
 </div>
 </section>
 <!-- Philosophy & Mission -->
-<section class="py-16 bg-primary-container text-white px-margin-mobile relative overflow-hidden">
+<section class="py-16 bg-primary-container text-white px-margin-mobile relative overflow-hidden scroll-mt-20" id="service">
 <div class="max-w-container-max mx-auto flex flex-col items-center text-center">
 <span class="material-symbols-outlined text-on-tertiary-container text-6xl mb-6" data-icon="diamond">diamond</span>
 <h2 class="font-headline-lg text-headline-lg-mobile mb-4">Total Value for Money</h2>
@@ -298,7 +303,7 @@
 </div>
 </section>
 <!-- Strengths & Fleet -->
-<section class="py-16 bg-surface-container-highest industrial-grid px-margin-mobile">
+<section class="py-16 bg-surface-container-highest industrial-grid px-margin-mobile scroll-mt-20" id="fleet">
 <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 <div>
 <h2 class="font-headline-lg text-headline-lg-mobile text-primary mb-8">Unmatched Field Assets</h2>
@@ -342,8 +347,8 @@
 </div>
 </section>
 <!-- Network Section -->
-<section class="py-16 px-margin-mobile md:px-margin-desktop bg-white" id="network">
-<div class="max-w-container-max mx-auto">
+<section class="py-16 px-margin-mobile md:px-margin-desktop bg-white scroll-mt-20" id="network">
+<!--<div class="max-w-container-max mx-auto">
 <div class="text-center mb-16">
 <span class="font-label-sm text-label-sm text-on-primary-container uppercase">National Presence</span>
 <h2 class="font-headline-lg text-headline-lg-mobile text-primary mt-2">Comprehensive Hub Network</h2>
@@ -370,10 +375,11 @@
 <p class="font-bold">Ahmedabad</p>
 </div>
 </div>
-</div>
+</div> -->
+<Branches/>
 </section>
 <!-- Major Clients & Awards -->
-<section class="py-16 bg-surface-container px-margin-mobile">
+<!-- <section class="py-16 bg-surface-container px-margin-mobile">
 <div class="max-w-container-max mx-auto">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
 <div>
@@ -414,7 +420,8 @@
 </div>
 </div>
 </div>
-</section>
+</section> -->
+<ClientScroller/>
 <!-- Introduction Letter Section -->
 <section class="py-24 px-margin-mobile md:px-margin-desktop bg-white border-y border-outline-variant">
 <div class="max-w-3xl mx-auto industrial-shadow p-12 bg-surface-bright relative">
@@ -486,10 +493,10 @@
 <div>
 <h4 class="font-label-sm text-label-sm uppercase mb-6 font-bold text-primary">Operations</h4>
 <ul class="space-y-3">
-<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">About Us</a></li>
-<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Services</a></li>
-<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Fleet Strength</a></li>
-<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Network Hubs</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#about">About Us</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#service">Services</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#fleet">Fleet Strength</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#network">Network Hubs</a></li>
 </ul>
 </div>
 <div>
@@ -526,8 +533,22 @@
 </div>
 </footer>
 <script is:inline>
-
-
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    history.pushState(null, null, targetId);
+                }
+            });
+        });
         // Micro-interaction for cards
         document.querySelectorAll('.industrial-shadow').forEach(card => {
             card.addEventListener('mousedown', () => {
