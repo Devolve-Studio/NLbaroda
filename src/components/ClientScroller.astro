@@ -1,0 +1,82 @@
+---
+const logos: string[] = [
+    "c1.webp", "c2.webp", "c3.webp", "c4.webp", "c5.webp",
+    "c6.webp", "c7.webp", "c8.webp", "c9.webp", "c10.webp",
+    "c11.webp", "c12.webp", "c13.webp", "c14.webp", "c15.webp",
+    "c16.webp", "c17.webp",
+];
+
+// Pre-concatenate the array for the loop
+const displayLogos: string[] = [...logos, ...logos];
+---
+
+<section>
+    <div class="w-[70vw] mx-auto overflow-hidden py-10 hidden md:block">
+        <swiper-container
+                space-between="40"
+                slides-per-view="5"
+                loop="true"
+                speed="6000"
+                autoplay-delay="0"
+                autoplay-disable-on-interaction="false"
+                grab-cursor="true"
+                allow-touch-move="true"
+                class="continuous-slider"
+        >
+            {displayLogos.map((logo: string, idx: number) => (
+                    <swiper-slide key={idx}>
+                        <picture>
+                            <img
+                                    src={`/clients/${logo}`}
+                                    alt={`Client ${idx + 1}`}
+                                    draggable="false"
+                                    unselectable="on"
+                                    class="h-30 w-auto opacity-80 filter brightness-110 hover:opacity-100 hover:grayscale-0 transition duration-300 pointer-events-none select-none"
+                            />
+                        </picture>
+                    </swiper-slide>
+            ))}
+        </swiper-container>
+    </div>
+
+    <div class="w-[70vw] mx-auto overflow-hidden py-10 md:hidden block">
+        <swiper-container
+                space-between="40"
+                slides-per-view="3"
+                loop="true"
+                speed="6000"
+                autoplay-delay="0"
+                autoplay-disable-on-interaction="false"
+                grab-cursor="true"
+                allow-touch-move="true"
+                class="continuous-slider"
+        >
+            {displayLogos.map((logo: string, idx: number) => (
+                    <swiper-slide key={idx}>
+                        <picture>
+                            <img
+                                    src={`/clients/${logo}`}
+                                    alt={`Client ${idx + 1}`}
+                                    draggable="false"
+                                    unselectable="on"
+                                    class="h-30 w-auto opacity-80 filter brightness-110 hover:opacity-100 hover:grayscale-0 transition duration-300 pointer-events-none select-none"
+                            />
+                        </picture>
+                    </swiper-slide>
+            ))}
+        </swiper-container>
+    </div>
+</section>
+
+<script>
+    // Register Swiper custom elements
+    import { register } from "swiper/element/bundle";
+    register();
+</script>
+
+<style is:global>
+    /* Required to make the infinite continuous scroll perfectly smooth. */
+    .continuous-slider::part(wrapper) {
+        transition-timing-function: linear !important;
+    }
+</style>
